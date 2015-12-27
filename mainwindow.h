@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QUndoStack>
+#include <QUndoView>
 
 namespace Ui {
 class MainWindow;
@@ -18,7 +20,7 @@ public:
 
 public slots:
     //file control
-//     void fnew();
+    void fnew();
     void fopen();
     void fopenRecent();
 //     void fclose();
@@ -26,10 +28,11 @@ public slots:
 //     void frename();
 //
 //     //Edit control
-//     void eundo();
-//     void eredo();
+    void eundo();
+    void eredo();
 //     void edelete();
-//     void efind();
+    void efind();
+    void efindreplace();
 //
 //     //view control
     void vlf_x_y(int x, int y);
@@ -39,6 +42,7 @@ public slots:
 //
 //     //help control
 //     void help();
+    void about();
 private:
     Ui::MainWindow *ui;
     QMenu* fileMenu;
@@ -58,6 +62,9 @@ private:
     void adjustForCurrentFile(const QString& filePath);
     void updateRecentActionList();
     void saveFile(const QString& filePath);
+
+    QUndoStack *undoStack;
+    QUndoView *undoView;
 };
 
 #endif // MAINWINDOW_H

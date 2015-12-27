@@ -6,6 +6,8 @@
 #include <QLabel>
 #include <QSettings>
 #include <QTextStream>
+#include "finddialog.h"
+#include "findreplacedialog.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -21,24 +23,36 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     //file
-    connect(ui->actionNew,SIGNAL(clicked(bool)),this,SLOT(fnew()));
+    connect(ui->actionNew,SIGNAL(triggered()),this,SLOT(fnew()));
     connect(ui->actionOpen,SIGNAL(triggered()),this,SLOT(fopen()));
     // connect(ui->actionOpen_Recent,SIGNAL(triggered()),this,SLOT(fopenRecent()));
     connect(ui->actionClose,SIGNAL(clicked(bool)),this,SLOT(fclose()));
     connect(ui->actionSave,SIGNAL(triggered()),this,SLOT(fsave()));
     connect(ui->actionRename,SIGNAL(clicked(bool)),this,SLOT(frename()));
     //edit
-    connect(ui->actionUndo,SIGNAL(clicked(bool)),this,SLOT(eundo()));
-    connect(ui->actionRedo,SIGNAL(clicked(bool)),this,SLOT(eredo()));
+    connect(ui->actionUndo,SIGNAL(triggered()),this,SLOT(eundo()));
+    connect(ui->actionRedo,SIGNAL(triggered()),this,SLOT(eredo()));
     connect(ui->actionDelete,SIGNAL(clicked(bool)),this,SLOT(edelete()));
-    connect(ui->actionFind,SIGNAL(clicked(bool)),this,SLOT(efind()));
+    connect(ui->actionFind,SIGNAL(triggered()),this,SLOT(efind()));
+    connect(ui->actionFind_Replace, SIGNAL(triggered()), this, SLOT(efindreplace()));
     //view
     connect(ui->actionLeft_right_1_1,SIGNAL(triggered()),this,SLOT(vlf_1_1()));
     connect(ui->actionLeft_right_1_2,SIGNAL(triggered()),this,SLOT(vlf_1_2()));
     connect(ui->actionLeft_right_2_1,SIGNAL(triggered()),this,SLOT(vlf_2_1()));
     //help
     connect(ui->actionMou_help,SIGNAL(clicked(bool)),this,SLOT(help()));
+    connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(about()));
+
+    ui->actionUndo->setShortcuts(QKeySequence::Undo);
+    ui->actionRedo->setShortcuts(QKeySequence::Redo);
+
     createActionsAndConnections();
+}
+
+
+void MainWindow::fnew()
+{
+    fsave();
 }
 
 
@@ -164,6 +178,39 @@ void MainWindow::saveFile(const QString &filePath) {
 }
 
 
+void MainWindow::eundo() {
+    ui->plainTextEdit->undo();
+
+    return;
+}
+
+void MainWindow::eredo() {
+    ui->plainTextEdit->redo();
+
+    return;
+}
+
+
+void MainWindow::efind() {
+    FindDialog *dialog = new FindDialog(this);
+    dialog->setModal(false);
+    dialog->setTextEdit(ui->plainTextEdit);
+    dialog->show();
+
+    return;
+}
+
+
+void MainWindow::efindreplace() {
+    FindReplaceDialog *dialog = new FindReplaceDialog(this);
+    dialog->setModal(false);
+    dialog->setTextEdit(ui->plainTextEdit);
+    dialog->show();
+
+    return;
+}
+
+
 void MainWindow::vlf_x_y(int x, int y) {
     ui->horizontalLayout_1->setStretch(x, y);
 
@@ -191,6 +238,13 @@ void MainWindow::vlf_1_2() {
     vlf_x_y(1, 2);
 
     return;
+}
+
+
+void MainWindow::about()
+{
+    QMessageBox::about(this, tr("About WM"),
+                       tr("About WM."));
 }
 
 

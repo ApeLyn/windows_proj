@@ -39,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>796</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -66,6 +66,7 @@
     <addaction name="actionRedo"/>
     <addaction name="actionDelete"/>
     <addaction name="actionFind"/>
+    <addaction name="actionFind_Replace"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -85,6 +86,7 @@
      <string>Help</string>
     </property>
     <addaction name="actionMou_help"/>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -189,6 +191,16 @@
   <action name="action_Open_Recent">
    <property name="text">
     <string>&amp;Open Recent</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionFind_Replace">
+   <property name="text">
+    <string>Find &amp; Replace</string>
    </property>
   </action>
  </widget>
