@@ -22,7 +22,7 @@ public slots:
     void fopen();
     void fopenRecent();
 //     void fclose();
-//     void fsave();
+    void fsave();
 //     void frename();
 //
 //     //Edit control
@@ -57,6 +57,7 @@ private:
     void loadFile(const QString& filePath);
     void adjustForCurrentFile(const QString& filePath);
     void updateRecentActionList();
+    void saveFile(const QString& filePath);
 };
 
 #endif // MAINWINDOW_H

@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionOpen,SIGNAL(triggered()),this,SLOT(fopen()));
     // connect(ui->actionOpen_Recent,SIGNAL(triggered()),this,SLOT(fopenRecent()));
     connect(ui->actionClose,SIGNAL(clicked(bool)),this,SLOT(fclose()));
-    connect(ui->actionSave,SIGNAL(clicked(bool)),this,SLOT(fsave()));
+    connect(ui->actionSave,SIGNAL(triggered()),this,SLOT(fsave()));
     connect(ui->actionRename,SIGNAL(clicked(bool)),this,SLOT(frename()));
     //edit
     connect(ui->actionUndo,SIGNAL(clicked(bool)),this,SLOT(eundo()));
@@ -136,6 +136,30 @@ void MainWindow::adjustForCurrentFile(const QString &filePath){
 
     // see note
     updateRecentActionList();
+}
+
+
+void MainWindow::fsave() {
+    QString filePath = QFileDialog::getSaveFileName(
+                       this, tr("Save File"), "",
+                       tr("text files (*.md *.txt)"));
+    if (!filePath.isEmpty()) {
+        saveFile(filePath);
+    }
+
+    return;
+}
+
+
+void MainWindow::saveFile(const QString &filePath) {
+    QFile f(filePath);
+    f.open( QIODevice::WriteOnly );
+
+    f.write(ui->plainTextEdit->toPlainText().toUtf8());
+
+    f.close();
+
+    return;
 }
 
 
