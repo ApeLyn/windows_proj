@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;
@@ -17,28 +18,44 @@ public:
 
 public slots:
     //file control
-    void fnew();
+//     void fnew();
     void fopen();
     void fopenRecent();
-    void fclose();
-    void fsave();
-    void frename();
-
-    //Edit control
-    void eundo();
-    void eredo();
-    void edelete();
-    void efind();
-
-    //view control
-    void vlf_1_1();
-    void vlf_2_1();
-    void vlf_1_2();
-
-    //help control
-    void help();
+//     void fclose();
+//     void fsave();
+//     void frename();
+//
+//     //Edit control
+//     void eundo();
+//     void eredo();
+//     void edelete();
+//     void efind();
+//
+//     //view control
+//     void vlf_1_1();
+//     void vlf_2_1();
+//     void vlf_1_2();
+//
+//     //help control
+//     void help();
 private:
     Ui::MainWindow *ui;
+    QMenu* fileMenu;
+    QMenu* recentFilesMenu;
+
+    QAction* openAction;
+    QList<QAction*> recentFileActionList;
+    const int maxFileNr;
+
+    QString currentFilePath;
+    QLabel *imageLabel;
+
+    void createActionsAndConnections();
+    void createMenus();
+
+    void loadFile(const QString& filePath);
+    void adjustForCurrentFile(const QString& filePath);
+    void updateRecentActionList();
 };
 
 #endif // MAINWINDOW_H
