@@ -65,6 +65,7 @@ void MainWindow::loadFile(const QString &filePath){
        }
        inputFile.close();
     }
+    this->setWindowTitle(filePath);
 
     adjustForCurrentFile(filePath);
 }
