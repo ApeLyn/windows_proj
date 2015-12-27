@@ -32,9 +32,10 @@ public slots:
 //     void efind();
 //
 //     //view control
-//     void vlf_1_1();
-//     void vlf_2_1();
-//     void vlf_1_2();
+    void vlf_x_y(int x, int y);
+    void vlf_1_1();
+    void vlf_2_1();
+    void vlf_1_2();
 //
 //     //help control
 //     void help();

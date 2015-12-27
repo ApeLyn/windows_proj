@@ -33,9 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionDelete,SIGNAL(clicked(bool)),this,SLOT(edelete()));
     connect(ui->actionFind,SIGNAL(clicked(bool)),this,SLOT(efind()));
     //view
-    connect(ui->actionLeft_right_1_1,SIGNAL(clicked(bool)),this,SLOT(vlf_1_1()));
-    connect(ui->actionLeft_right_1_2,SIGNAL(clicked(bool)),this,SLOT(vlf_1_2()));
-    connect(ui->actionLeft_right_2_1,SIGNAL(clicked(bool)),this,SLOT(vlf_2_1()));
+    connect(ui->actionLeft_right_1_1,SIGNAL(triggered()),this,SLOT(vlf_1_1()));
+    connect(ui->actionLeft_right_1_2,SIGNAL(triggered()),this,SLOT(vlf_1_2()));
+    connect(ui->actionLeft_right_2_1,SIGNAL(triggered()),this,SLOT(vlf_2_1()));
     //help
     connect(ui->actionMou_help,SIGNAL(clicked(bool)),this,SLOT(help()));
     createActionsAndConnections();
@@ -136,6 +136,36 @@ void MainWindow::adjustForCurrentFile(const QString &filePath){
 
     // see note
     updateRecentActionList();
+}
+
+
+void MainWindow::vlf_x_y(int x, int y) {
+    ui->horizontalLayout_1->setStretch(x, y);
+
+    return;
+}
+
+
+void MainWindow::vlf_1_1() {
+    vlf_x_y(0, 1);
+    vlf_x_y(1, 1);
+
+    return;
+}
+
+
+void MainWindow::vlf_2_1() {
+    vlf_x_y(0, 2);
+    vlf_x_y(1, 1);
+    return;
+}
+
+
+void MainWindow::vlf_1_2() {
+    vlf_x_y(0, 1);
+    vlf_x_y(1, 2);
+
+    return;
 }
 
 
