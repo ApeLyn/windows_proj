@@ -17,17 +17,23 @@ SOURCES += main.cpp\
     finddialog.cpp \
     findform.cpp \
     findreplacedialog.cpp \
-    findreplaceform.cpp
+    findreplaceform.cpp \
+    preferences.cpp
 
 HEADERS  += mainwindow.h \
     finddialog.h \
     findform.h \
     findreplacedialog.h \
-    findreplaceform.h
+    findreplaceform.h \
+    preferences.h
 
 FORMS    += mainwindow.ui \
     findreplacedialog.ui \
-    findreplaceform.ui
+    findreplaceform.ui \
+    preferences.ui
 
 DISTFILES += \
     linux_proj.pro.user
+
+RESOURCES += \
+    images.qrc

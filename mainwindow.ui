@@ -88,6 +88,14 @@
     <addaction name="actionMou_help"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuMOU">
+    <property name="title">
+     <string>WinMarker</string>
+    </property>
+    <addaction name="actionPreferences"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuMOU"/>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
@@ -201,6 +209,16 @@
   <action name="actionFind_Replace">
    <property name="text">
     <string>Find &amp; Replace</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>preferences</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
    </property>
   </action>
  </widget>

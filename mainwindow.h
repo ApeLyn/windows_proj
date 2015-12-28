@@ -43,6 +43,11 @@ public slots:
 //     //help control
 //     void help();
     void about();
+
+    //WinMarker control
+    void wpreferences();
+  //  void wquit();
+
 private:
     Ui::MainWindow *ui;
     QMenu* fileMenu;
@@ -65,6 +70,8 @@ private:
 
     QUndoStack *undoStack;
     QUndoView *undoView;
+
+    //add preference
 };
 
 #endif // MAINWINDOW_H

@@ -8,7 +8,7 @@
 #include <QTextStream>
 #include "finddialog.h"
 #include "findreplacedialog.h"
-
+#include "preferences.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -42,6 +42,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //help
     connect(ui->actionMou_help,SIGNAL(clicked(bool)),this,SLOT(help()));
     connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(about()));
+
+    //WinMarker
+    connect(ui->actionPreferences,SIGNAL(clicked(bool)),this,SLOT(wpreferences()));
+    //connect(ui->actionQuit,SIGNAL(clicked(bool)),this,SLOT(wquit()));
 
     ui->actionUndo->setShortcuts(QKeySequence::Undo);
     ui->actionRedo->setShortcuts(QKeySequence::Redo);
@@ -247,6 +251,15 @@ void MainWindow::about()
                        tr("About WM."));
 }
 
+//new function interface
+//functions in preference to be realised
+void MainWindow::wpreferences()
+{
+    preferences *pre = new preferences(this);
+    pre->show();
+    return;
+
+}
 
 MainWindow::~MainWindow()
 {
