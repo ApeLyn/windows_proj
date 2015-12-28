@@ -37,6 +37,7 @@ protected:
 
 protected slots:
     void textToFindChanged();
+    void textToReplaceChanged();
 
 protected:
     Ui::FindReplaceForm *ui;

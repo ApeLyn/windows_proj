@@ -31,3 +31,5 @@ FORMS    += mainwindow.ui \
 
 DISTFILES += \
     linux_proj.pro.user
+
+RESOURCES +=
