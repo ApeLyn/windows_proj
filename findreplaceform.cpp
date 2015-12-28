@@ -22,7 +22,7 @@ FindReplaceForm::FindReplaceForm(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->textToFind, SIGNAL(textChanged(QString)), this, SLOT(textToFindChanged()));
-    connect(ui->textToFind, SIGNAL(textChanged(QString)), this, SLOT(validateRegExp(QString)));
+    connect(ui->textToReplace, SIGNAL(textChanged(QString)), this, SLOT(textToReplaceChanged()));
 
     connect(ui->findButton, SIGNAL(clicked()), this, SLOT(find()));
     connect(ui->closeButton, SIGNAL(clicked()), parent, SLOT(close()));
@@ -45,8 +45,10 @@ void FindReplaceForm::hideReplaceWidgets() {
 
 void FindReplaceForm::setTextEdit(QPlainTextEdit *textEdit_) {
     textEdit = textEdit_;
-    connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceButton, SLOT(setEnabled(bool)));
-    connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceAllButton, SLOT(setEnabled(bool)));
+    // connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceButton, SLOT(setEnabled(bool)));
+    // connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceAllButton, SLOT(setEnabled(bool)));
+    textCursor.setPosition(0);
+    textEdit->setTextCursor(textCursor);
 }
 
 void FindReplaceForm::changeEvent(QEvent *e)
@@ -65,6 +67,14 @@ void FindReplaceForm::changeEvent(QEvent *e)
 
 void FindReplaceForm::textToFindChanged() {
     ui->findButton->setEnabled(ui->textToFind->text().size() > 0);
+    return;
+}
+
+
+void FindReplaceForm::textToReplaceChanged() {
+    ui->replaceButton->setEnabled(ui->textToFind->text().size() > 0 && ui->textToReplace->text().size() > 0);
+    ui->replaceAllButton->setEnabled(ui->textToFind->text().size() > 0 && ui->textToReplace->text().size() > 0);
+    return;
 }
 
 
@@ -103,6 +113,7 @@ void FindReplaceForm::find(bool next) {
 void FindReplaceForm::replace() {
     if (!textEdit->textCursor().hasSelection()) {
         find();
+        textEdit->textCursor().insertText(ui->textToReplace->text());
     } else {
         textEdit->textCursor().insertText(ui->textToReplace->text());
         find();
@@ -110,6 +121,9 @@ void FindReplaceForm::replace() {
 }
 
 void FindReplaceForm::replaceAll() {
+    if(!textEdit->textCursor().hasSelection()) {
+        find();
+    }
     while (textEdit->textCursor().hasSelection()){
         textEdit->textCursor().insertText(ui->textToReplace->text());
         find();
