@@ -1,5 +1,6 @@
 #include "preferences.h"
 #include "ui_preferences.h"
+#include "mainwindow.h"
 
 preferences::preferences(QWidget *parent) :
     QDialog(parent),
@@ -13,6 +14,7 @@ preferences::preferences(QWidget *parent) :
     connect(ui->editButton,SIGNAL(clicked(bool)),this,SLOT(switch2edit()));
     connect(ui->themeButton,SIGNAL(clicked(bool)),this,SLOT(switch2theme()));
     connect(ui->cssButton,SIGNAL(clicked(bool)),this,SLOT(switch2css()));
+    connect(ui->t_part2,SIGNAL(activated(int)),this,SLOT(change_theme()));
 }
 
 void preferences::switch2gen() {
@@ -91,6 +93,12 @@ void preferences::set_env(char env_id, bool env) {
     }
 
     return;
+}
+
+void preferences::change_theme() {
+    int value = ui->t_part2->currentIndex();
+    MainWindow *parent = (MainWindow*)(this->parent());
+    parent->change_theme(value);
 }
 
 preferences::~preferences()

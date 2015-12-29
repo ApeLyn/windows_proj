@@ -50,6 +50,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionUndo->setShortcuts(QKeySequence::Undo);
     ui->actionRedo->setShortcuts(QKeySequence::Redo);
 
+    change_theme(0);
+
     createActionsAndConnections();
 }
 
@@ -58,14 +60,24 @@ void MainWindow::change_theme(int theme) {
 
     switch (theme) {
         case 0: {
+            ui->plainTextEdit->setStyleSheet("background: white;color: black;font-size: 15px;");
+            break;
         }
         case 1: {
+            ui->plainTextEdit->setStyleSheet("background: white;color: black;font-size: 22px;");
+            break;
         }
         case 2: {
+            ui->plainTextEdit->setStyleSheet("background: black;color: white;font-size: 15px;");
+            break;
         }
         case 3: {
+            ui->plainTextEdit->setStyleSheet("background: black;color: white;font-size: 22px;");
+            break;
         }
         case 4: {
+            ui->plainTextEdit->setStyleSheet("background: white;color: blue;");
+            break;
         }
     }
 

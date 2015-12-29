@@ -20,6 +20,7 @@ public slots:
     void switch2edit();
     void switch2theme();
     void switch2css();
+    void change_theme();
 
 private:
     Ui::preferences *ui;
