@@ -44,13 +44,32 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(about()));
 
     //WinMarker
-    connect(ui->actionPreferences,SIGNAL(clicked(bool)),this,SLOT(wpreferences()));
+    connect(ui->actionPreferences,SIGNAL(triggered()),this,SLOT(wpreferences()));
     //connect(ui->actionQuit,SIGNAL(clicked(bool)),this,SLOT(wquit()));
 
     ui->actionUndo->setShortcuts(QKeySequence::Undo);
     ui->actionRedo->setShortcuts(QKeySequence::Redo);
 
     createActionsAndConnections();
+}
+
+
+void MainWindow::change_theme(int theme) {
+
+    switch (theme) {
+        case 0: {
+        }
+        case 1: {
+        }
+        case 2: {
+        }
+        case 3: {
+        }
+        case 4: {
+        }
+    }
+
+    return;
 }
 
 

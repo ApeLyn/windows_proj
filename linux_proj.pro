@@ -35,9 +35,5 @@ FORMS    += mainwindow.ui \
 DISTFILES += \
     linux_proj.pro.user
 
-<<<<<<< HEAD
 RESOURCES += \
     images.qrc
-=======
-RESOURCES +=
->>>>>>> 49541b065bca3ca4b8fc0a3c87bd3474d44b777d

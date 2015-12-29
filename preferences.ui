@@ -32,8 +32,8 @@
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>images/home-general-icon-2.png</normaloff>images/home-general-icon-2.png</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/home-general-icon-2.png</normaloff>:/images/home-general-icon-2.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -55,8 +55,8 @@
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>images/edit.png</normaloff>images/edit.png</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/edit.png</normaloff>:/images/edit.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -78,8 +78,8 @@
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>images/themes.png</normaloff>images/themes.png</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/themes.png</normaloff>:/images/themes.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -101,8 +101,8 @@
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>images/css.png</normaloff>images/css.png</iconset>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/css.png</normaloff>:/images/css.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -338,6 +338,9 @@
    </property>
   </widget>
   <widget class="QRadioButton" name="e_part6">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -415,6 +418,9 @@
    </property>
   </widget>
   <widget class="QLabel" name="g_part1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -513,6 +519,8 @@
    </item>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

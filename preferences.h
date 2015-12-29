@@ -15,8 +15,15 @@ public:
     explicit preferences(QWidget *parent = 0);
     ~preferences();
 
+public slots:
+    void switch2gen();
+    void switch2edit();
+    void switch2theme();
+    void switch2css();
+
 private:
     Ui::preferences *ui;
+    void set_env(char env_id, bool env);
 
 };
 

@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void change_theme(int theme);
     ~MainWindow();
 
 public slots:
