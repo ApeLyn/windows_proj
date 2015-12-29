@@ -9,6 +9,7 @@
 #include "finddialog.h"
 #include "findreplacedialog.h"
 #include "preferences.h"
+#include "highlighter.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -51,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionRedo->setShortcuts(QKeySequence::Redo);
 
     change_theme(0);
+    highlighter = new Highlighter(ui->plainTextEdit->document());
 
     createActionsAndConnections();
 }

@@ -18,14 +18,16 @@ SOURCES += main.cpp\
     findform.cpp \
     findreplacedialog.cpp \
     findreplaceform.cpp \
-    preferences.cpp
+    preferences.cpp \
+    highlighter.cpp
 
 HEADERS  += mainwindow.h \
     finddialog.h \
     findform.h \
     findreplacedialog.h \
     findreplaceform.h \
-    preferences.h
+    preferences.h \
+    highlighter.h
 
 FORMS    += mainwindow.ui \
     findreplacedialog.ui \

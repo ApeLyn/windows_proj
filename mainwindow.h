@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QUndoStack>
 #include <QUndoView>
+#include "highlighter.h"
 
 namespace Ui {
 class MainWindow;
@@ -71,6 +72,8 @@ private:
 
     QUndoStack *undoStack;
     QUndoView *undoView;
+
+    Highlighter *highlighter;
 
     //add preference
 };
