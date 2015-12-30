@@ -4,7 +4,6 @@
 #include <QMessageBox>
 #include <QAction>
 #include <QLabel>
-#include <QSettings>
 #include <QTextStream>
 #include "finddialog.h"
 #include "findreplacedialog.h"
@@ -55,6 +54,52 @@ MainWindow::MainWindow(QWidget *parent) :
     highlighter = new Highlighter(ui->plainTextEdit->document());
 
     createActionsAndConnections();
+
+    m_findDialog = new FindDialog(this);
+    m_findDialog->setModal(false);
+
+    m_findReplaceDialog = new FindReplaceDialog(this);
+    m_findReplaceDialog->setModal(false);
+
+    m_preferences = new preferences(this);
+    m_preferences->setModal(true);
+
+    readSettings();
+}
+
+
+void MainWindow::changeEvent(QEvent *e)
+{
+    QMainWindow::changeEvent(e);
+    switch (e->type()) {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    writeSettings();
+    event->accept();
+}
+
+
+void MainWindow::writeSettings() {
+    QSettings settings;
+    m_findDialog->writeSettings(settings);
+    m_findReplaceDialog->writeSettings(settings);
+    m_preferences->writeSettings(settings);
+}
+
+void MainWindow::readSettings() {
+    QSettings settings;
+    m_findDialog->readSettings(settings);
+    m_findReplaceDialog->readSettings(settings);
+    m_preferences->readSettings(settings);
 }
 
 
@@ -229,20 +274,16 @@ void MainWindow::eredo() {
 
 
 void MainWindow::efind() {
-    FindDialog *dialog = new FindDialog(this);
-    dialog->setModal(false);
-    dialog->setTextEdit(ui->plainTextEdit);
-    dialog->show();
+    m_findDialog->show();
+    m_findDialog->setTextEdit(ui->plainTextEdit);
 
     return;
 }
 
 
 void MainWindow::efindreplace() {
-    FindReplaceDialog *dialog = new FindReplaceDialog(this);
-    dialog->setModal(false);
-    dialog->setTextEdit(ui->plainTextEdit);
-    dialog->show();
+    m_findReplaceDialog->show();
+    m_findReplaceDialog->setTextEdit(ui->plainTextEdit);
 
     return;
 }
@@ -288,13 +329,15 @@ void MainWindow::about()
 //functions in preference to be realised
 void MainWindow::wpreferences()
 {
-    preferences *pre = new preferences(this);
-    pre->show();
+    m_preferences->show();
     return;
-
 }
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete m_findDialog;
+    delete m_findReplaceDialog;
+    delete m_preferences;
 }

@@ -5,7 +5,11 @@
 #include <QLabel>
 #include <QUndoStack>
 #include <QUndoView>
+#include <QSettings>
 #include "highlighter.h"
+#include "finddialog.h"
+#include "findreplacedialog.h"
+#include "preferences.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +23,13 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     void change_theme(int theme);
     ~MainWindow();
+
+
+protected:
+    void changeEvent(QEvent *e);
+    void closeEvent(QCloseEvent *event);
+    void writeSettings();
+    void readSettings();
 
 public slots:
     //file control
@@ -54,6 +65,10 @@ private:
     Ui::MainWindow *ui;
     QMenu* fileMenu;
     QMenu* recentFilesMenu;
+
+    FindDialog *m_findDialog;
+    FindReplaceDialog *m_findReplaceDialog;
+    preferences *m_preferences;
 
     QAction* openAction;
     QList<QAction*> recentFileActionList;

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTextCursor>
 #include <QPlainTextEdit>
+#include <QSettings>
 
 
 namespace Ui {

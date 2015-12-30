@@ -2,6 +2,9 @@
 #define PREFERENCES_H
 
 #include <QDialog>
+#include <QSettings>
+
+#define THEME "THEME"
 
 namespace Ui {
 class preferences;
@@ -13,7 +16,12 @@ class preferences : public QDialog
 
 public:
     explicit preferences(QWidget *parent = 0);
+    virtual void writeSettings(QSettings &settings, const QString &prefix = "Preference");
+    virtual void readSettings(QSettings &settings, const QString &prefix = "Preference");
     ~preferences();
+
+// protected:
+    // void changeEvent(QEvent *e);
 
 public slots:
     void switch2gen();
