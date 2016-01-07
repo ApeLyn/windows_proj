@@ -10,9 +10,9 @@ Highlighter::Highlighter(QTextDocument *document) :
     keywordFormat.setForeground(QColor("#6c71c4"));
     keywordFormat.setFontWeight(QFont::Bold);
 
-    imageFormat.setForeground(QColor("#cf009a"));
+    // imageFormat.setForeground(QColor("#cf009a"));
 
-    linkFormat.setForeground(QColor("#4e279a"));
+    // linkFormat.setForeground(QColor("#4e279a"));
 
     HighlightingRule rule;
 
@@ -58,7 +58,8 @@ Highlighter::Highlighter(QTextDocument *document) :
              << htmlTagRegExp.arg("td")
              << htmlTagRegExp.arg("tr")
              << "<strike>" << "</strike>"
-             << "<del>" << "</del>";
+             << "<del>" << "</del>"
+             << "&gt;";
 
     foreach(QString keyword, keywords) {
         rule.pattern = QRegExp(keyword);
@@ -66,6 +67,7 @@ Highlighter::Highlighter(QTextDocument *document) :
         highlightingRules.append(rule);
     }
 
+    /*
     rule.pattern = QRegExp(htmlTagRegExp.arg("img"));
     rule.format = &imageFormat;
     highlightingRules.append(rule);
@@ -73,18 +75,38 @@ Highlighter::Highlighter(QTextDocument *document) :
     rule.pattern = QRegExp(htmlTagRegExp.arg("a"));
     rule.format = &linkFormat;
     highlightingRules.append(rule);
+    */
+
+    italicText.setFontItalic(true);
+    italicText.setForeground(QColor("#B35F04"));
+    rule.pattern = QRegExp("(\\*|_)[^\\*_]+(\\*|_)");
+    rule.format = &italicText;
+    highlightingRules.append(rule);
+
+    boldText.setForeground(QColor("#0B8BB3"));
+    rule.pattern = QRegExp("(\\*\\*|__)[^\\*_]+(\\*\\*|__)");
+    rule.format = &boldText;
+    highlightingRules.append(rule);
 
     mdTitle.setFontWeight(QFont::Bold);
+    mdTitle.setForeground(QColor("#6D25E8"));
     // mdTitle.setFontPointSize(22);
     // mdTitle.setForeground(Qt::black);
-    rule.pattern = QRegExp("#\\b[A-Za-z0-9_]+\\b");
+    rule.pattern = QRegExp("^#+\\s*\\b[A-Za-z0-9_]+\\b");
     rule.format = &mdTitle;
+    highlightingRules.append(rule);
 
     // codeArea.setFontWeight(QFont::Bold);
     codeArea.setBackground(brush);
     rule.pattern = QRegExp("\\s\\s\\s\\s.*");
     rule.format = &codeArea;
+    highlightingRules.append(rule);
 
+    // boldText = new QTextCharFormat();
+
+    linkFormat.setForeground(QColor("#46E833"));
+    rule.pattern = QRegExp("\\!\\[.*\\]\\(.*\\)");
+    rule.format = &linkFormat;
     highlightingRules.append(rule);
 }
 

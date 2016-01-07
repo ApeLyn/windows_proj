@@ -26,10 +26,14 @@ private:
 
     QBrush brush;
     QTextCharFormat keywordFormat;
-    QTextCharFormat imageFormat;
-    QTextCharFormat linkFormat;
+    // QTextCharFormat imageFormat;
+    // QTextCharFormat linkFormat;
+    QTextCharFormat boldText;
+    QTextCharFormat italicText;
     QTextCharFormat mdTitle;
     QTextCharFormat codeArea;
+    // QTextCharFormat *boldText;
+    QTextCharFormat linkFormat;
     bool enabled;
 
 };
