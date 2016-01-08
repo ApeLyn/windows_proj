@@ -83,7 +83,6 @@
     </property>
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
-    <addaction name="actionDelete"/>
     <addaction name="actionFind"/>
     <addaction name="actionFind_Replace"/>
    </widget>
@@ -135,7 +134,6 @@
      <string>WinMarker</string>
     </property>
     <addaction name="actionPreferences"/>
-    <addaction name="actionQuit"/>
    </widget>
    <addaction name="menuMOU"/>
    <addaction name="menuFile"/>
