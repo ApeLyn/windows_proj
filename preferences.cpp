@@ -16,6 +16,7 @@ preferences::preferences(QWidget *parent) :
     connect(ui->themeButton,SIGNAL(clicked(bool)),this,SLOT(switch2theme()));
     connect(ui->cssButton,SIGNAL(clicked(bool)),this,SLOT(switch2css()));
     connect(ui->t_part2,SIGNAL(activated(int)),this,SLOT(change_theme()));
+    connect(ui->c_part2,SIGNAL(activated(int)),this,SLOT(change_css()));
 
 }
 
@@ -117,6 +118,12 @@ void preferences::change_theme() {
     int value = ui->t_part2->currentIndex();
     MainWindow *parent = (MainWindow*)(this->parent());
     parent->change_theme(value);
+}
+
+void preferences::change_css() {
+    int value = ui->c_part2->currentIndex();
+    MainWindow *parent = (MainWindow*)(this->parent());
+    parent->change_css(value);
 }
 
 void preferences::writeSettings(QSettings &settings, const QString &prefix) {

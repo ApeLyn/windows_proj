@@ -390,17 +390,17 @@
    </property>
    <item>
     <property name="text">
-     <string>Clearness</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Clearness Dark</string>
+     <string>Github2</string>
     </property>
    </item>
    <item>
     <property name="text">
      <string>Github</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>ClearnessDark</string>
     </property>
    </item>
   </widget>
