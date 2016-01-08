@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //WinMarker
     connect(ui->actionPreferences,SIGNAL(triggered()),this,SLOT(wpreferences()));
-    //connect(ui->actionQuit,SIGNAL(clicked(bool)),this,SLOT(wquit()));
+    connect(ui->actionQuit,SIGNAL(clicked()),this,SLOT(exit()));
 
     ui->actionUndo->setShortcuts(QKeySequence::Undo);
     ui->actionRedo->setShortcuts(QKeySequence::Redo);
@@ -122,7 +122,7 @@ QString MainWindow::getHtml(const QString& str) {
 bool MainWindow::eventFilter (QObject *obj, QEvent *e )
 {
 
-    if (e->type() == QEvent::KeyPress)
+    if (e->type() == QEvent::KeyRelease)
     {
         QKeyEvent *event = static_cast <QKeyEvent * > (e) ;
         QString html = ui->plainTextEdit->toPlainText();
@@ -148,6 +148,7 @@ bool MainWindow::eventFilter (QObject *obj, QEvent *e )
         return false ;
     }
 }
+
 
 void MainWindow::Current_Date()
 {
