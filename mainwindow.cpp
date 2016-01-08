@@ -19,6 +19,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <qfont.h>
 
 using namespace std;
 
@@ -294,25 +295,29 @@ void MainWindow::readSettings() {
 
 void MainWindow::change_theme(int theme) {
 
+    QFont font;
+    font.setPointSize(5);
+    font.setFamily(("Time New Roman"));
+    ui->plainTextEdit->setFont(font);
     switch (theme) {
         case 0: {
-            ui->plainTextEdit->setStyleSheet("background: white;color: black;font-size: 15px;");
+            ui->plainTextEdit->setStyleSheet("background: white;color: black;font-size: 15px;font: 75 15pt 'Calibri';");
             break;
         }
         case 1: {
-            ui->plainTextEdit->setStyleSheet("background: white;color: black;font-size: 22px;");
+            ui->plainTextEdit->setStyleSheet("background: white;color: black;font-size: 22px;font: 75 12pt 'Calibri';");
             break;
         }
         case 2: {
-            ui->plainTextEdit->setStyleSheet("background: #2D2D2D;color: white;font-size: 15px;");
+            ui->plainTextEdit->setStyleSheet("background: #2D2D2D;color: white;font-size: 15px;font: 75 15pt 'Calibri';");
             break;
         }
         case 3: {
-            ui->plainTextEdit->setStyleSheet("background: #022550;color: white;font-size: 22px;");
+            ui->plainTextEdit->setStyleSheet("background: #022550;color: white;font-size: 22px;font: 75 12pt 'Calibri';");
             break;
         }
         case 4: {
-            ui->plainTextEdit->setStyleSheet("background: white;color: blue;");
+            ui->plainTextEdit->setStyleSheet("background: white;color: blue;font: 75 15pt 'Calibri';");
             break;
         }
     }
