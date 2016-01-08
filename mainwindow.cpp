@@ -304,11 +304,11 @@ void MainWindow::change_theme(int theme) {
             break;
         }
         case 2: {
-            ui->plainTextEdit->setStyleSheet("background: black;color: white;font-size: 15px;");
+            ui->plainTextEdit->setStyleSheet("background: #2D2D2D;color: white;font-size: 15px;");
             break;
         }
         case 3: {
-            ui->plainTextEdit->setStyleSheet("background: black;color: white;font-size: 22px;");
+            ui->plainTextEdit->setStyleSheet("background: #022550;color: white;font-size: 22px;");
             break;
         }
         case 4: {
