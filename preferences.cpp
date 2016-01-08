@@ -72,13 +72,11 @@ void preferences::set_env(char env_id, bool env) {
         case 'c': {
             ui->c_part1->setVisible(env);
             ui->c_part2->setVisible(env);
-            ui->c_part3->setVisible(env);
             break;
         }
         case 'e': {
             ui->e_part1->setVisible(env);
             ui->e_part2->setVisible(env);
-            ui->e_part3->setVisible(env);
             ui->e_part4->setVisible(env);
             ui->e_part5->setVisible(env);
             ui->e_part6->setVisible(env);
@@ -90,7 +88,6 @@ void preferences::set_env(char env_id, bool env) {
         case 't': {
             ui->t_part1->setVisible(env);
             ui->t_part2->setVisible(env);
-            ui->t_part3->setVisible(env);
             break;
         }
     }

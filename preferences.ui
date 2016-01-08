@@ -149,9 +149,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>90</y>
-     <width>59</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
@@ -169,7 +169,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>160</x>
      <y>90</y>
      <width>59</width>
      <height>16</height>
@@ -188,7 +188,7 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>290</x>
      <y>90</y>
      <width>59</width>
      <height>16</height>
@@ -236,19 +236,6 @@
     <string>use theme</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="t_part3">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>145</y>
-     <width>50</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Edit</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="e_part1">
    <property name="geometry">
     <rect>
@@ -273,19 +260,6 @@
    </property>
    <property name="text">
     <string>Helvitica</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="e_part3">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>150</y>
-     <width>61</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>fonts</string>
    </property>
   </widget>
   <widget class="QLabel" name="e_part5">
@@ -403,19 +377,6 @@
      <string>ClearnessDark</string>
     </property>
    </item>
-  </widget>
-  <widget class="QPushButton" name="c_part3">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>150</y>
-     <width>61</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Edit</string>
-   </property>
   </widget>
   <widget class="QLabel" name="g_part1">
    <property name="enabled">
