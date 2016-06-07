@@ -5,7 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT       += printsupport
+QT       += webkitwidgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = linux_proj
@@ -18,14 +19,32 @@ SOURCES += main.cpp\
     findform.cpp \
     findreplacedialog.cpp \
     findreplaceform.cpp \
+    highlighter.cpp \
+    sundown/autolink.c \
+    sundown/buffer.c \
+    sundown/houdini_href_e.c \
+    sundown/houdini_html_e.c \
+    sundown/html.c \
+    sundown/html_smartypants.c \
+    sundown/markdown.c \
+    sundown/stack.c \
     preferences.cpp
 
 HEADERS  += mainwindow.h \
-    finddialog.h \
-    findform.h \
     findreplacedialog.h \
     findreplaceform.h \
-    preferences.h
+    preferences.h \
+    finddialog.h \
+    findform.h \
+    highlighter.h \
+    preference.h \
+    sundown/autolink.h \
+    sundown/buffer.h \
+    sundown/houdini.h \
+    sundown/html.h \
+    sundown/html_blocks.h \
+    sundown/markdown.h \
+    sundown/stack.h
 
 FORMS    += mainwindow.ui \
     findreplacedialog.ui \
@@ -33,11 +52,13 @@ FORMS    += mainwindow.ui \
     preferences.ui
 
 DISTFILES += \
-    linux_proj.pro.user
+    linux_proj.pro.user \
+    .DS_Store \
+    .gitignore \
+    css/Clearness Dark.css \
+    css/Clearness.css \
+    css/GitHub.css \
+    css/GitHub2.css
 
-<<<<<<< HEAD
 RESOURCES += \
     images.qrc
-=======
-RESOURCES +=
->>>>>>> 49541b065bca3ca4b8fc0a3c87bd3474d44b777d

@@ -1,7 +1,6 @@
 #include <QtGui>
 #include <QTextEdit>
 #include <QRegExp>
-#include <QSettings>
 
 #include "findreplaceform.h"
 #include "ui_findreplaceform.h"
@@ -47,8 +46,10 @@ void FindReplaceForm::setTextEdit(QPlainTextEdit *textEdit_) {
     textEdit = textEdit_;
     // connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceButton, SLOT(setEnabled(bool)));
     // connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceAllButton, SLOT(setEnabled(bool)));
-    textCursor.setPosition(0);
-    textEdit->setTextCursor(textCursor);
+    if (textEdit->toPlainText().size() > 0) {
+        textCursor.setPosition(0);
+        textEdit->setTextCursor(textCursor);
+    }
 }
 
 void FindReplaceForm::changeEvent(QEvent *e)

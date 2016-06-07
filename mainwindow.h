@@ -5,6 +5,11 @@
 #include <QLabel>
 #include <QUndoStack>
 #include <QUndoView>
+#include <QSettings>
+#include "highlighter.h"
+#include "finddialog.h"
+#include "findreplacedialog.h"
+#include "preferences.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,7 +21,18 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void change_theme(int theme);
+    void change_css(int theme);
     ~MainWindow();
+
+
+protected:
+    bool eventFilter (QObject *obj, QEvent *e ) ;
+    void changeEvent(QEvent *e);
+    void closeEvent(QCloseEvent *event);
+    void writeSettings();
+    void readSettings();
+    QString getHtml(const QString& str);
 
 public slots:
     //file control
@@ -25,6 +41,7 @@ public slots:
     void fopenRecent();
 //     void fclose();
     void fsave();
+    void fexport();
 //     void frename();
 //
 //     //Edit control
@@ -48,10 +65,28 @@ public slots:
     void wpreferences();
   //  void wquit();
 
+    //action
+    void Current_Date();
+    void Current_Time();
+    void insertLeft();
+    void insertRight();
+    void insertSpace();
+    void insertAnd();
+    void insertLink();
+    void insertImage();
+    void insertLine();
+    void insertComment();
+    void insertCode();
+    void help();
+
 private:
     Ui::MainWindow *ui;
     QMenu* fileMenu;
     QMenu* recentFilesMenu;
+
+    FindDialog *m_findDialog;
+    FindReplaceDialog *m_findReplaceDialog;
+    preferences *m_preferences;
 
     QAction* openAction;
     QList<QAction*> recentFileActionList;
@@ -67,9 +102,12 @@ private:
     void adjustForCurrentFile(const QString& filePath);
     void updateRecentActionList();
     void saveFile(const QString& filePath);
-
+    void savePdf(const QString& filePath);
+    QString get_file_content();
     QUndoStack *undoStack;
     QUndoView *undoView;
+
+    Highlighter *highlighter;
 
     //add preference
 };
